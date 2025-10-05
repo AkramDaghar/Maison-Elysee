@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - MAISON ÉLYSÉE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+            .cart-container {
+                padding: 60px 0;
+            }
+
+            .cart-title {
+                font-family: 'Marcellus', serif;
+                font-size: 42px;
+                margin-bottom: 40px;
+                letter-spacing: 2px;
+            }
+
+            .cart-items {
+                border-top: 1px solid #e8e8e8;
+            }
+
+            .cart-item {
+                display: grid;
+                grid-template-columns: 120px 1fr auto;
+                gap: 30px;
+                padding: 30px 0;
+                border-bottom: 1px solid #e8e8e8;
+                align-items: center;
+            }
+
+            .cart-item-image {
+                width: 120px;
+                height: 160px;
+                background: #f5f5f5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 40px;
+            }
+
+            .cart-item-details h3 {
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+
+            .cart-item-details p {
+                font-size: 13px;
+                color: #8f8f8f;
+                margin-bottom: 15px;
+            }
+
+            .cart-item-controls {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .qty-control {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border: 1px solid #e8e8e8;
+                padding: 5px 10px;
+            }
+
+            .qty-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 5px 10px;
+            }
+
+            .qty-value {
+                min-width: 30px;
+                text-align: center;
+                font-size: 13px;
+            }
+
+            .remove-btn {
+                background: none;
+                border: none;
+                color: #8f8f8f;
+                cursor: pointer;
+                font-size: 12px;
+                text-decoration: underline;
+            }
+
+            .cart-item-price {
+                text-align: right;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .cart-summary {
+                max-width: 400px;
+                margin-left: auto;
+                margin-top: 40px;
+                padding: 30px;
+                border: 1px solid #e8e8e8;
+            }
+
+            .summary-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 0;
+                font-size: 14px;
+            }
+
+            .summary-row.total {
+                border-top: 1px solid #e8e8e8;
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+            .empty-cart {
+                text-align: center;
+                padding: 100px 0;
+            }
+
+            .empty-cart-icon {
+                font-size: 80px;
+                margin-bottom: 20px;
+                opacity: 0.3;
+            }
+
+            .empty-cart h3 {
+                font-family: 'Marcellus', serif;
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .empty-cart p {
+                color: #8f8f8f;
+                margin-bottom: 30px;
+            }
+
+        </style>
+</head>
+<body>
+    <div class="promo-banner">
+        Profitez de -25% sur Cette Vente d'Été. Ne Manquez Pas! 15H : 45M : 37S
+    </div>
+    
+    <header>
+        <div class="header-content">
+            <div class="logo">MAISON ÉLYSÉE</div>
+            <nav>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="products.html" class="nav-link">Femme</a>
+                    <a href="products.html" class="nav-link">Homme</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </nav>
+            <div class="nav-icons">
+                <button class="icon-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d='M19 11.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0m-2.107 5.42 3.08 3.08'/></svg></button>
+                <button class="icon-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0'/><path d='M14.5 9.25a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0M17 19.5c-.317-6.187-9.683-6.187-10 0'/></svg></button>
+                <button class="icon-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d='M7.75 3.5C5.127 3.5 3 5.76 3 8.547 3 14.125 12 20.5 12 20.5s9-6.375 9-11.953C21 5.094 18.873 3.5 16.25 3.5c-1.86 0-3.47 1.136-4.25 2.79-.78-1.654-2.39-2.79-4.25-2.79'/></svg></button>
+                <button class="icon-btn" onclick="window.location.href='cart.html'">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d='M8.935 7H7.773c-1.072 0-1.962.81-2.038 1.858l-.73 10C4.921 20.015 5.858 21 7.043 21h9.914c1.185 0 2.122-.985 2.038-2.142l-.73-10C18.189 7.81 17.299 7 16.227 7h-1.162m-6.13 0V5c0-1.105.915-2 2.043-2h2.044c1.128 0 2.043.895 2.043 2v2m-6.13 0h6.13'/></svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="cart-container">
+            <h1 class="cart-title">Mon Panier</h1>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be loaded by script.js -->
+            </div>
+            <div id="cartSummary">
+                <!-- Cart summary will be loaded by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">MAISON ÉLYSÉE</div>
+                    <p class="footer-description">
+                        Maison de mode de luxe fondée en 2025. Maison Élysée propose des collections 
+                        exclusives alliant élégance intemporelle et qualité exceptionnelle.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="products.html">Femme</a></li>
+                        <li><a href="products.html">Homme</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service Client</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Livraison</a></li>
+                        <li><a href="#">Retours</a></li>
+                        <li><a href="#">Guide des Tailles</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>À Propos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Notre Histoire</a></li>
+                        <li><a href="#">Durabilité</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Presse</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 Maison Élysée. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
